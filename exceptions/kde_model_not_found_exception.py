@@ -1,0 +1,2 @@
+class KdeModelNotFoundException(Exception):
+    pass
