@@ -9,20 +9,22 @@ app = Flask(__name__)
 api = Api(app, title='QAOA params predictor API', description='API for predicting QAOA params.')
 
 ns = api.namespace('KDE models', description='Trained KDE models')
+parser = reqparse.RequestParser()
+parser.add_argument('problem_name', type=str, required=True, choices=("max_cut", "stable_set"))  # add args
+parser.add_argument('graph_type', type=str, required=True, choices=("random", "caveman"))
+parser.add_argument('p_depth', type=int, required=True, choices=(1, 2, 3, 4))
+parser.add_argument('num_samples', type=int, required=True)
 
 
 @ns.route('/')
-@ns.param('problem_name', 'Problem name')
-@ns.param('graph_type', 'Graph type')
-@ns.param('p_depth', 'Depth-related p parameter')
-@ns.param('num_samples', 'Number of samples')
 class KdeModels(Resource):
 
     @ns.doc('Get predicted parameters.')
+    @ns.expect(parser, validate=True)
     def post(self):
         """Returns parameters sampled from the KDE model base on arguments provided."""
 
-        problem_name, graph_type, p_depth, num_samples = self._parse_arguments()
+        problem_name, graph_type, p_depth, num_samples = self._parse_arguments(parser)
 
         directory = "/serialized_models/"
 
@@ -40,12 +42,8 @@ class KdeModels(Resource):
 
         return {'sampled_params': sampled_params}, 200  # return data with 200 OK
 
-    def _parse_arguments(self):
-        parser = reqparse.RequestParser()  # initialize
-        parser.add_argument('problem_name', type=str, required=True)  # add args
-        parser.add_argument('graph_type', type=str, required=True)
-        parser.add_argument('p_depth', type=int, required=True)
-        parser.add_argument('num_samples', type=int, required=True)
+    def _parse_arguments(self, parser):
+        # initialize
 
         args = parser.parse_args()  # parse arguments to dictionary
 
