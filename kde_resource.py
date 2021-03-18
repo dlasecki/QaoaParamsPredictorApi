@@ -6,7 +6,7 @@ from kde_models_provider import get_kde_model
 ns = Namespace('KDE models', description='Trained KDE models')
 
 
-def set_up_parser():
+def _set_up_parser():
     problems = ("max_cut", "stable_set", "graph_partition", "vertex_cover")
     p_values = (1, 2, 3, 4)
     graph_types = ("random", "caveman", "barbell", "ladder")
@@ -19,7 +19,7 @@ def set_up_parser():
     return parser
 
 
-parser = set_up_parser()
+parser = _set_up_parser()
 
 
 @ns.route('/')
@@ -29,7 +29,6 @@ class KdeModels(Resource):
     @ns.expect(parser, validate=True)
     def post(self):
         """Returns parameters sampled from the KDE model base on arguments provided."""
-
         problem_name, graph_type, p_depth, num_samples = self._parse_arguments()
 
         directory = "/serialized_models/"
