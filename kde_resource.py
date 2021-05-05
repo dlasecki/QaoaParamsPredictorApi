@@ -3,7 +3,16 @@ from flask_restx import Namespace, reqparse, Resource
 from exceptions.kde_model_not_found_exception import KdeModelNotFoundException
 from kde_models_provider import get_kde_model
 
-ns = Namespace('KDE models', description='Trained KDE models')
+ns = Namespace('KDE models', description='Models were trained using the Kernel Density Estimation algorithm on a big '
+                                         'number of good input parameters sets, specific to an optimization problem '
+                                         'and the class of a graph. They were obtained by solving the QAOA algorithm '
+                                         'with a classical optimization loop in the cloud, initialized at several '
+                                         'thousands of random points in the parameters space for each problem '
+                                         'instance. Parameters sets that yielded solutions of a poor quality were '
+                                         'discarded from the training set. We followed the methodology of Khairy et. '
+                                         'al. It is recommended that several sets of parameters are sampled from our '
+                                         'models to increase the chance of finding a good solution for a specific '
+                                         'graph architecture.')
 
 
 def _set_up_parser():
