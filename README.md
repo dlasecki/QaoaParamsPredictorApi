@@ -8,6 +8,10 @@ Note: This project is <b>still in progress</b>! Some TODOs which are currently b
  - Communication of the API with the database and the Cloud Storage.
  - Tests of the API (Postman).
 
+The minimal and functional deployment of the API is available here:
+https://qaoa-params-predictor-api-5uo2z7eykq-uc.a.run.app/.
+The stable_set option is not supplied with files and serves as a demonstration of the reaction to a request for a non-existent resource.
+
 This API provides (hopefully) good input parameters for variational quantum algorithms for various types of combinatorial optimization problems. It allows to skip computationally expensive classical optimization over a parameter's space at still obtain a reasonably good solution. The current focus of the API is the Quantum Approximate Optimization Algorithm (QAOA) with a default ansatz (see Fahri et al. https://arxiv.org/abs/1411.4028).
 
 The API provides an endpoint powered by machine learning models trained using a Kernel Density Estimation algorithm. Models were trained using the Kernel Density Estimation algorithmon a big number of good input parameters sets, specific to an optimization problem and the class of a graph. They were obtained by solving the QAOA algorithm with a classical optimization loop in the cloud, initialized at several thousands of random points in the parameters space for each problem instance. Parameters sets that yielded solutions of a poor quality were discarded from the training set. We followed the methodology of Khairy et al. (https://arxiv.org/abs/1911.11071).
