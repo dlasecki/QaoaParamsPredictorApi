@@ -11,7 +11,7 @@ ns = Namespace('kde_qaoa',
 
 def _set_up_parser():
     #problems = ("max_cut", "stable_set", "graph_partition", "vertex_cover")
-    problems = ("max_cut")
+    problems = ("max_cut", "stable_set")
     p_values = (1, 2, 3, 4)
     #graph_types = ("erdos_renyi", "caveman", "barbell", "ladder")
     graph_types = ("ladder", "caveman")

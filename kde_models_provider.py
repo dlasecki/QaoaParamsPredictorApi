@@ -13,7 +13,7 @@ def get_kde_model(directory: str, problem_name: str, graph_type: str, p_depth: i
     all_file_names = __get_all_file_names(directory)
     unpickled_model = None
     for file_name in all_file_names:
-        if __is_file_relevant(all_file_names[0], problem_name, graph_type, p_depth):
+        if __is_file_relevant(file_name, problem_name, graph_type, p_depth):
             unpickled_model = dill.load(open(directory + file_name, 'rb'))
 
     if unpickled_model:
