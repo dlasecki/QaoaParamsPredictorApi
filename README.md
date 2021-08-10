@@ -1,7 +1,7 @@
 [![Unitary Fund](https://img.shields.io/badge/Supported%20By-UNITARY%20FUND-brightgreen.svg?style=for-the-badge)](http://unitary.fund)
 # QaoaParamsPredictorApi
 
-Note: This project is still in progress! Some TODOs which are currently being addressed:
+Note: This project is <b>still in progress</b>! Some TODOs which are currently being addressed:
 
  - Storing machine learning models in Cloud Storage.
  - Storing Cloud Storage addresses of machine learning models in a MySQL database (Cloud SQL).
