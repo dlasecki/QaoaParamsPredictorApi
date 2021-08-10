@@ -6,6 +6,7 @@ Note: This project is <b>still in progress</b>! Some TODOs which are currently b
  - Storing machine learning models in Cloud Storage.
  - Storing Cloud Storage addresses of machine learning models in a MySQL database (Cloud SQL).
  - Communication of the API with the database and the Cloud Storage.
+ - Tests of the API (Postman).
 
 This API provides (hopefully) good input parameters for variational quantum algorithms for various types of combinatorial optimization problems. It allows to skip computationally expensive classical optimization over a parameter's space at still obtain a reasonably good solution. The current focus of the API is the Quantum Approximate Optimization Algorithm (QAOA) with a default ansatz (see Fahri et al. https://arxiv.org/abs/1411.4028).
 
