@@ -3,7 +3,7 @@ from flask import Flask
 from flask_restx import Api
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from kde_resource import ns as kde_ns
+from kernel_density_estimation.kde_resource import ns as kde_ns
 
 werkzeug.cached_property = werkzeug.utils.cached_property  # it fixes an issue with werkzeug
 

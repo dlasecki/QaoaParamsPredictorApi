@@ -1,7 +1,7 @@
 from flask_restx import Namespace, reqparse, Resource
 
 from exceptions.kde_model_not_found_exception import KdeModelNotFoundException
-from kde_models_provider import get_kde_model
+from kernel_density_estimation.kde_models_provider import get_kde_model
 
 ns = Namespace('kde_qaoa',
                description='KDE models for QAOA. It is recommended to sample several sets of parameters and '
