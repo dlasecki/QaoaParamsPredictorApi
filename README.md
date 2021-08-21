@@ -14,3 +14,5 @@ The API provides an endpoint powered by machine learning models trained using a 
 In our API, the following optimization problems are supported: MaxCut, Graph Partition, Vertex Cover, Stable Set, for the following classes of graphs: Erdos-Renyi, caveman, barbell, ladder, for the following depths of quantum circuits: p=1, p=2, p=3 and p=4.
 
 The project is funded by the Unitary Fund and computational resources in the cloud were provided by Zapata Computing.
+
+This project is licensed under the terms of the Apache 2.0 license.
