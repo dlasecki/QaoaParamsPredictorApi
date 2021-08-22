@@ -10,6 +10,7 @@ ns = Namespace('kde_qaoa',
 
 
 def _set_up_parser():
+    """Defines a parser object used in the API that also defines possible choices presented to the user."""
     problems = ("max_cut", "stable_set", "graph_partition", "vertex_cover")
     p_values = (1, 2, 3, 4)
     graph_types = ("random", "caveman", "barbell", "ladder")
@@ -27,6 +28,7 @@ parser = _set_up_parser()
 
 @ns.route('/')
 class KdeModels(Resource):
+    """Class that defines an API endpoint for KDE models."""
 
     @ns.doc('Get predicted parameters.')
     @ns.expect(parser, validate=True)
@@ -52,6 +54,7 @@ class KdeModels(Resource):
 
     @staticmethod
     def _parse_arguments():
+        """Parses parameters provided by the user in the API."""
         args = parser.parse_args()  # parse arguments to dictionary
 
         problem_name = args['problem_name']

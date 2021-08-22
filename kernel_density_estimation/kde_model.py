@@ -1,4 +1,5 @@
 class KdeModel:
+    """Class storing a KDE model and associated metedata."""
 
     def __init__(self, kde_model, kernel: str, bandwidth: float, problem_name, graph_type, number_of_instances_trained,
                  p: int):
