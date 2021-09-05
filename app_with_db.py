@@ -3,6 +3,7 @@ from flask import Flask
 from flask_restx import Api
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+from database.db_connector import init_connection_engine
 from kde_resource import ns as kde_ns
 
 werkzeug.cached_property = werkzeug.utils.cached_property  # it fixes an issue with werkzeug
@@ -31,6 +32,7 @@ api = Api(app, title='Input parameters predictor API for quantum variational alg
                       'The project is funded by the Unitary Fund and computational resources in the cloud were '
                       'provided by Zapata Computing.', contact='Dariusz Lasecki')
 api.add_namespace(kde_ns)
+db = init_connection_engine()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

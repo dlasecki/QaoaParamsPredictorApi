@@ -1,7 +1,8 @@
 from flask_restx import Namespace, reqparse, Resource
 
+from app_with_db import db
 from exceptions.kde_model_not_found_exception import KdeModelNotFoundException
-from kde_models_provider import get_kde_model
+from kde_models_provider_db import get_kde_model
 
 ns = Namespace('kde_qaoa',
                description='KDE models for QAOA. It is recommended to sample several sets of parameters and '
@@ -34,10 +35,8 @@ class KdeModels(Resource):
         """Returns parameters sampled from the KDE model base on arguments provided."""
         problem_name, graph_type, p_depth, num_samples = self._parse_arguments()
 
-        directory = "/serialized_models/"
-
         try:
-            relevant_kde_model = get_kde_model(directory, problem_name, graph_type, p_depth)
+            relevant_kde_model = get_kde_model(db, problem_name, graph_type, p_depth)
         except KdeModelNotFoundException:
             return 'KDE model with given parameters not found.', 400
 
