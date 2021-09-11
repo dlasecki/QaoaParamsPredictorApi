@@ -1,0 +1,2 @@
+class MySqlKdeModelException(Exception):
+    pass
