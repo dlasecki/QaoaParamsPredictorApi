@@ -8,6 +8,10 @@ Note: This project is <b>still in progress</b>! Some TODOs which are currently b
  - Communication of the API with the database and the Cloud Storage.
  - Tests of the API (Postman).
 
+You can find the draft of a system architecture below:
+
+<a href="https://ibb.co/7Gs3TJ1"><img src="https://i.ibb.co/nDxXVsL/kde-api-drawio-1.png" alt="kde-api-drawio-1" border="0"></a>
+
 The minimal and functional deployment of the API is available here:
 https://qaoa-params-predictor-api-5uo2z7eykq-uc.a.run.app/. You can play with it manually by clicking the 'Try it out' button.
 The stable_set option is not supplied with files on purpose and serves as a demonstration of the reaction to a request for a non-existent resource.
