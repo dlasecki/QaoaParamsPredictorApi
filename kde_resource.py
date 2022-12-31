@@ -1,6 +1,9 @@
+import os
+
 from flask_restx import Namespace, reqparse, Resource
 
 from app_with_db import db
+from database.db_kde_provider import get_kde_model_address
 from exceptions.kde_model_not_found_exception import KdeModelNotFoundException
 from kde_models_provider_db import get_kde_model
 
@@ -35,8 +38,11 @@ class KdeModels(Resource):
         """Returns parameters sampled from the KDE model base on arguments provided."""
         problem_name, graph_type, p_depth, num_samples = self._parse_arguments()
 
+        blob_name = get_kde_model_address(db, problem_name, graph_type, p_depth)
+
         try:
-            relevant_kde_model = get_kde_model(db, problem_name, graph_type, p_depth)
+            relevant_kde_model = get_kde_model(db, problem_name, graph_type, p_depth, os.environ["STORAGE_BUCKET"],
+                                               blob_name)
         except KdeModelNotFoundException:
             return 'KDE model with given parameters not found.', 400
 
